@@ -12,24 +12,17 @@ var Config      = require('./gulpfile.config');
 var tsProject   = tsc.createProject('tsconfig.json');
 var browserSync = require('browser-sync');
 var superstatic = require( 'superstatic' );
+var sass      = require('gulp-sass');
 
 // Create config
 var config      = new Config();
 
-/**
-* Generates the app.d.ts references file dynamically from all application *.ts files.
-*/
-// gulp.task('gen-ts-refs', function () {
-//     var target = gulp.src(config.appTypeScriptReferences);
-//     var sources = gulp.src([config.allTypeScript], {read: false});
-//     return target.pipe(inject(sources, {
-//         starttag: '//{',
-//         endtag: '//}',
-//         transform: function (filepath) {
-//             return '/// <reference path="../..' + filepath + '" />';
-//         }
-//     })).pipe(gulp.dest(config.typings));
-// });
+// Gulp CSS Compiling
+gulp.task('styles', function() {
+    gulp.src('styles/main.scss')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(gulp.dest('./dist/css/'));
+});
 
 // Gulp TypeScript Linter
 gulp.task('ts-lint', function () {
@@ -69,7 +62,7 @@ gulp.task('watch', function() {
 });
 
 // Serve task
-gulp.task('serve', ['compile-ts', 'watch'], function() {
+gulp.task('serve', ['compile-ts', 'styles', 'watch'], function() {
 	process.stdout.write('Starting browserSync and superstatic...\n');
 	browserSync({
 		port 			: 3000,
@@ -89,4 +82,4 @@ gulp.task('serve', ['compile-ts', 'watch'], function() {
 	});
 });
 
-gulp.task('default', ['ts-lint', 'compile-ts']);
+gulp.task('default', ['ts-lint', 'compile-ts', 'styles']);
