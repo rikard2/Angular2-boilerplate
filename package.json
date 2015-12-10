@@ -17,7 +17,8 @@
     "gulp-sass-glob-import": "^0.1.0",
     "gulp-sourcemaps": "^1.5.1",
     "gulp-tslint": "^1.4.4",
-    "gulp-typescript": "^2.5.0"
+    "gulp-typescript": "^2.5.0",
+    "systemjs": "^0.19.6"
   },
   "repository": {
     "type": "git",
