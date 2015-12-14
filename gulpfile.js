@@ -24,15 +24,21 @@ gulp.task('styles', function() {
         .pipe(gulp.dest('./dist/css/'));
 });
 
+// Gulp HTML Compiling
+gulp.task('html', function() {
+    gulp.src(config.listFilesHTML)
+        .pipe(gulp.dest('./dist/html'));
+});
+
 // Gulp TypeScript Linter
 gulp.task('ts-lint', function () {
-	return gulp.src(config.allTypeScript).pipe(tslint()).pipe(tslint.report('prose'));
+	return gulp.src(config.listFilesTS).pipe(tslint()).pipe(tslint.report('prose'));
 });
 
 // Gulp TypeScript Compiler
 gulp.task('compile-ts', function () {
 	var sourceTsFiles = [
-		config.allTypeScript,              
+		config.listFilesTS,              
 		config.libraryTypeScriptDefinitions
 	];
 
@@ -58,7 +64,9 @@ gulp.task('clean-ts', function (cb) {
 
 // Gulp Watcher
 gulp.task('watch', function() {
-	gulp.watch([config.allTypeScript], ['ts-lint', 'compile-ts']);
+	gulp.watch([config.listFilesTS],   ['ts-lint', 'compile-ts']);
+	gulp.watch([config.listFilesSCSS], ['styles']);
+	gulp.watch([config.listFilesHTML], ['html']);
 });
 
 // Serve task
@@ -82,4 +90,4 @@ gulp.task('serve', ['compile-ts', 'styles', 'watch'], function() {
 	});
 });
 
-gulp.task('default', ['ts-lint', 'compile-ts', 'styles']);
+gulp.task('default', ['ts-lint', 'compile-ts', 'styles', 'html']);

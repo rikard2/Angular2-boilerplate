@@ -9,8 +9,9 @@ var GulpConfig = (function () {
 
         // Compile Paths
         this.tsOutputPath  = this.build  + '/js';
-        this.allJavaScript = [this.build + '/js/**/*.js'];
-        this.allTypeScript = this.source + '/**/*.ts';
+        this.listFilesTS   = this.source + '/**/*.ts';
+        this.listFilesSCSS = this.source + '/**/*.scss';
+        this.listFilesHTML = this.source + '/**/*.html';
 
         // Typings
         this.typings       = './tools/typings/';
