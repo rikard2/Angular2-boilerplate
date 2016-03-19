@@ -40,7 +40,7 @@ gulp.task('ts-lint', function () {
 // Gulp TypeScript Compiler
 gulp.task('compile-ts', function () {
 	var sourceTsFiles = [
-		config.listFilesTS,              
+		config.listFilesTS,
 		config.libraryTypeScriptDefinitions
 	];
 
@@ -80,10 +80,10 @@ gulp.task('serve', ['compile-ts', 'styles', 'views', 'watch'], function() {
 		logLevel 		: 'silent',
 		logPrefix 		: 'angular2typescript',
 		notify 			: true,
-		reloadDelay 	: 0,
+		reloadDelay 	: 500,
 		server 			: {
 			baseDir: './dist',
-			middleware: superstatic({ 
+			middleware: superstatic({
 				debug: true
 			})
 		}

@@ -4,8 +4,12 @@
 		<title>Angular 2 QuickStart</title>
 		<base href="/">
 		<!-- CSS -->
-		<link href="dist/css/main.css" rel="stylesheet" type="text/css"/>
+		<script src="dist/js/codemirror.js"></script>
+		<link href="dist/css/codemirror.css" rel="stylesheet" type="text/css"/>
 
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<link href="dist/css/main.css" rel="stylesheet" type="text/css"/>
+		<link href='https://fonts.googleapis.com/css?family=Roboto:400,700,500' rel='stylesheet' type='text/css'>
 		<!-- Script -->
 		<script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
 		<script src="node_modules/systemjs/dist/system.src.js"></script>
@@ -13,9 +17,16 @@
 		<script src="node_modules/angular2/bundles/angular2.dev.js"></script>
 		<script src="node_modules/angular2/bundles/router.dev.js"></script>
 
+
+		<script src="dist/codemirror/sql.js"></script>
+		<link rel="stylesheet" href="dist/codemirror/show-hint.css" />
+		<script src="dist/codemirror/show-hint.js"></script>
+		<script src="dist/codemirror/sql-hint.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
 		<script>
 			System.config({
-				packages: {        
+				packages: {
 					'dist/js': {
 						main                : "main",
 						defaultJSExtensions : true
@@ -30,5 +41,25 @@
 	<body>
 		<my-app>Loading...</my-app>
 	</body>
+	<script>
+	loadEditor = function(element) {
+		var mime = 'text/x-mariadb';
 
+		var editor = CodeMirror(element, {
+			mode: mime,
+
+			indentWithTabs: true,
+	    smartIndent: true,
+	    lineNumbers: true,
+	    matchBrackets : true,
+	    autofocus: true,
+	    extraKeys: {"Ctrl-Space": "autocomplete"},
+	    hintOptions: {tables: {
+	      users: {name: null, score: null, birthDate: null},
+	      countries: {name: null, population: null, size: null}
+	    }}
+
+		});
+	}
+	</script>
 </html>
