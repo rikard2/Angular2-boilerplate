@@ -20,7 +20,6 @@ System.register(['angular2/core'], function(exports_1) {
             CodeMirror = (function () {
                 function CodeMirror(element) {
                     var nativeElement = element.nativeElement;
-                    console.log('nativeElement2', nativeElement);
                     loadEditor(nativeElement);
                 }
                 CodeMirror = __decorate([

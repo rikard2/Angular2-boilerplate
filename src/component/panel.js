@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../codemirror'], function(exports_1) {
+System.register(['angular2/core'], function(exports_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -9,31 +9,32 @@ System.register(['angular2/core', '../codemirror'], function(exports_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, codemirror_1;
-    var HomePageComponent;
+    var core_1;
+    var Panel;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
-            },
-            function (codemirror_1_1) {
-                codemirror_1 = codemirror_1_1;
             }],
         execute: function() {
-            HomePageComponent = (function () {
-                function HomePageComponent() {
+            Panel = (function () {
+                function Panel() {
                 }
-                HomePageComponent = __decorate([
+                __decorate([
+                    core_1.Input(), 
+                    __metadata('design:type', Object)
+                ], Panel.prototype, "title", void 0);
+                Panel = __decorate([
                     core_1.Component({
-                        templateUrl: 'dist/component/page-home/page-home.html',
-                        directives: [codemirror_1.CodeMirror]
+                        template: "<div class=\"panel\">\n      <h5 class=\"panel-title\">{{ title }}</h5>\n      <div class=\"panel-body\">\n        <ng-content></ng-content>\n      </div>\n    </div>",
+                        selector: 'content'
                     }), 
                     __metadata('design:paramtypes', [])
-                ], HomePageComponent);
-                return HomePageComponent;
+                ], Panel);
+                return Panel;
             })();
-            exports_1("HomePageComponent", HomePageComponent);
+            exports_1("Panel", Panel);
         }
     }
 });
-//# sourceMappingURL=page-home.js.map
+//# sourceMappingURL=panel.js.map

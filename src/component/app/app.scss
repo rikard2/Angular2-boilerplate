@@ -3,6 +3,13 @@ body {
 	color: #333;
 	height: 100%;
 }
+tr.clickable {
+	cursor: pointer;
+}
+
+tr.clickable:hover {
+	font-weight: bold;
+}
 .container {
 	font-family: 'Georgia';
 	margin-top: 70px;

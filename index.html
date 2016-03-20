@@ -16,6 +16,7 @@
 		<script src="node_modules/rxjs/bundles/Rx.js"></script>
 		<script src="node_modules/angular2/bundles/angular2.dev.js"></script>
 		<script src="node_modules/angular2/bundles/router.dev.js"></script>
+		<script src="node_modules/angular2/bundles/http.dev.js"></script>
 
 
 		<script src="dist/codemirror/sql.js"></script>
@@ -43,7 +44,14 @@
 	</body>
 	<script>
 	loadEditor = function(element) {
+		if (element.isEditor) {
+			return;
+		} else {
+			element.isEditor = true;
+		}
+
 		var mime = 'text/x-mariadb';
+
 
 		var editor = CodeMirror(element, {
 			mode: mime,

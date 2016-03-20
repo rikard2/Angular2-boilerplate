@@ -8,7 +8,6 @@ import {Component, ElementRef} from 'angular2/core';
 export class CodeMirror {
   constructor(element: ElementRef) {
     var nativeElement = element.nativeElement;
-    console.log('nativeElement2', nativeElement);
     loadEditor(nativeElement);
 
   }

@@ -4,7 +4,7 @@ import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 
 // Custom Components
 import {NavigationComponent} from '../navigation/navigation';
-import {HomePageComponent}   from '../page-home/page-home';
+import {ExerciseComponent}  from '../exercise/exercise';
 import {AboutPageComponent}  from '../page-about/page-about';
 
 @Component({
@@ -13,12 +13,27 @@ import {AboutPageComponent}  from '../page-about/page-about';
 	directives  : [NavigationComponent, ROUTER_DIRECTIVES]
 })
 @RouteConfig([
-	{   
+  {
 		path      : '/',
 		name      : 'Home',
-		component : HomePageComponent
+		component : AboutPageComponent
 	},
-	{ 
+	{
+		path      : '/course/:courseId',
+		name      : 'Course',
+		component : ExerciseComponent
+	},
+  {
+		path      : '/chapter/:courseId/:chapterId',
+		name      : 'Chapter',
+		component : ExerciseComponent
+	},
+  {
+		path      : '/exercise/:courseId/:chapterId/:exerciseId',
+    name: 'Exercise',
+		component : ExerciseComponent
+	},
+	{
 		path      : '/about',
 		name      : 'About',
 		component : AboutPageComponent
