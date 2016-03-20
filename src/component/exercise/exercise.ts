@@ -5,6 +5,7 @@ import {Panel} from '../panel';
 import {Chapters} from '../chapters';
 import {Exercises} from '../exercises';
 import {RouteParams} from 'angular2/router';
+import {HttpService} from '../../service/httpservice';
 import {Http, Response, BaseRequestOptions, RequestMethod, Request, RequestOptions} from "angular2/http";
 
 @Component({
@@ -20,66 +21,28 @@ export class ExerciseComponent {
   exercises;
   exercise;
 
-  constructor(private http: Http, private routeParams:RouteParams) {
+  constructor(private http: Http, private routeParams:RouteParams, httpService: HttpService) {
     this.courseId = routeParams.get('courseId');
     this.chapterId = routeParams.get('chapterId');
     this.exerciseId = routeParams.get('exerciseId');
-    console.log('routeParams', routeParams);
 
-    http._defaultOptions.headers.set('Content-Type', 'application/json');
-    var url = 'http://adaptkiller.azurewebsites.net/api/service/list/chapter_list'
-    var data = {
-      'Model': {
-        CourseId: 1
-      }
-    };
-
-    http
-    .post(url, JSON.stringify(data))
-    .subscribe((response) => {
-      var body = JSON.parse(response._body);
-
-      var validationErrorMessage = body.ValidationErrorMessage;
-      var exceptionMessage = body.ExceptionMessage;
-
-      var result = body.Result;
-
-      this.chapters = result;
-    });
+    httpService.list('list', 'chapter_list', { CourseId: 1 })
+      .subscribe((result) => {
+        this.chapters = result;
+      });
 
     if (this.chapterId) {
-      http.post(
-        'http://adaptkiller.azurewebsites.net/api/service/list/exercise_list',
-        JSON.stringify({
-          'Model': {
-            ChapterId: this.chapterId
-          }
-        }))
-      .subscribe((response) => {
-        var body = JSON.parse(response._body);
-
-        var result = body.Result;
-
-        this.exercises = result;
-      });
+      httpService.list('list', 'exercise_list', { ChapterId: this.chapterId })
+        .subscribe((result) => {
+          this.exercises = result;
+        });
     }
 
     if (this.exerciseId) {
-      http.post(
-        'http://adaptkiller.azurewebsites.net/api/service/single/exercise_get',
-        JSON.stringify({
-          'Model': {
-            ExerciseId: this.exerciseId
-          }
-        }))
-      .subscribe((response) => {
-        var body = JSON.parse(response._body);
-
-        var result = body.Result;
-
-        this.exercise = result;
-      });
+      httpService.list('single', 'exercise_get', { ExerciseId: this.exerciseId })
+        .subscribe((result) => {
+          this.exercise = result;
+        });
     }
-
   }
 }

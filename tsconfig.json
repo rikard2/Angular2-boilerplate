@@ -27,7 +27,8 @@
     "./src/component/navigation/navigation.ts",
     "./src/component/page-about/page-about.ts",
     "./src/component/panel.ts",
-    "./src/main.ts"
+    "./src/main.ts",
+    "./src/service/httpservice.ts"
   ],
   "atom": {
     "rewriteTsconfig": true
