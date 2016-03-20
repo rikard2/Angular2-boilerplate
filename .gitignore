@@ -5,5 +5,6 @@ tsbuild/
 .user
 bin
 obj
+PublishProfiles
 .csproj.user
 packages
