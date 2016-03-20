@@ -7,9 +7,29 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "removeComments": false,
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "outDir": "tsbuild"
   },
+  "filesGlob": [
+    "./src/**/*.ts",
+    "./src/**/*.tsx"
+  ],
   "exclude": [
     "node_modules"
-  ]
+  ],
+  "files": [
+    "./src/component/app/app.ts",
+    "./src/component/chapters.ts",
+    "./src/component/codemirror.ts",
+    "./src/component/exercise/exercise.ts",
+    "./src/component/exercises.ts",
+    "./src/component/hello.ts",
+    "./src/component/navigation/navigation.ts",
+    "./src/component/page-about/page-about.ts",
+    "./src/component/panel.ts",
+    "./src/main.ts"
+  ],
+  "atom": {
+    "rewriteTsconfig": true
+  }
 }

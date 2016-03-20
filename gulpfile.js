@@ -19,6 +19,11 @@ var uglify      = require('gulp-uglify');
 // Create config
 var config      = new Config();
 
+gulp.task('vendor', function() {
+  gulp.src('./vendor/**/*')
+    .pipe(gulp.dest('./dist/vendor/'));
+});
+
 // Gulp CSS Compiling
 gulp.task('styles', function() {
     gulp.src('./src/main.scss')
@@ -70,7 +75,7 @@ gulp.task('watch', function() {
 });
 
 // Serve task
-gulp.task('serve', ['compile-ts', 'styles', 'views', 'watch'], function() {
+gulp.task('serve', ['vendor', 'compile-ts', 'styles', 'views', 'watch'], function() {
 	process.stdout.write('Starting browserSync and superstatic...\n');
 	browserSync({
 		port 			: 3000,
