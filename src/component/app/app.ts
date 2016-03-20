@@ -5,6 +5,7 @@ import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 // Custom Components
 import {NavigationComponent} from '../navigation/navigation';
 import {CoursePageComponent}  from '../course/course';
+import {CoursesPageComponent}  from '../courses/courses';
 import {AboutPageComponent}  from '../about/about';
 import {HomePageComponent}  from '../home/home';
 
@@ -18,6 +19,11 @@ import {HomePageComponent}  from '../home/home';
 		path      : '/',
 		name      : 'Home',
 		component : HomePageComponent
+	},
+  {
+		path      : '/courses',
+		name      : 'Courses',
+		component : CoursesPageComponent
 	},
 	{
 		path      : '/course/:courseId',

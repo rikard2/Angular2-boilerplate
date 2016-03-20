@@ -27,7 +27,6 @@ export class Exercises {
   navigateToExercise(exercise) {
     var courseId = this.routeParams.get('courseId');
     var chapterId = this.routeParams.get('chapterId');
-    console.log(exercise);
     this.router.navigate( ['Exercise', {
         courseId: courseId,
         chapterId: chapterId,

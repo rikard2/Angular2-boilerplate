@@ -23,6 +23,7 @@
     "./src/component/chapters.ts",
     "./src/component/codemirror.ts",
     "./src/component/course/course.ts",
+    "./src/component/courses/courses.ts",
     "./src/component/exercises.ts",
     "./src/component/hello.ts",
     "./src/component/home/home.ts",
