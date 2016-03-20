@@ -10,7 +10,6 @@ export class HttpService {
     }
 
     list(type: string, action: string, model) {
-      console.log('lis4');
       model = {
         'Model': model
       };

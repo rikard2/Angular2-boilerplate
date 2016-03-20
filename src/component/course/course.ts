@@ -9,10 +9,10 @@ import {HttpService} from '../../service/httpservice';
 import {Http, Response, BaseRequestOptions, RequestMethod, Request, RequestOptions} from "angular2/http";
 
 @Component({
-    templateUrl  : 'dist/component/exercise/exercise.html',
+    templateUrl  : 'dist/component/course/course.html',
     directives: [CodeMirror, Panel, Chapters, Exercises]
 })
-export class ExerciseComponent {
+export class CoursePageComponent {
   courseId;
   chapterId;
   exerciseId;

@@ -4,8 +4,9 @@ import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 
 // Custom Components
 import {NavigationComponent} from '../navigation/navigation';
-import {ExerciseComponent}  from '../exercise/exercise';
-import {AboutPageComponent}  from '../page-about/page-about';
+import {CoursePageComponent}  from '../course/course';
+import {AboutPageComponent}  from '../about/about';
+import {HomePageComponent}  from '../home/home';
 
 @Component({
     selector    : 'my-app',
@@ -16,22 +17,22 @@ import {AboutPageComponent}  from '../page-about/page-about';
   {
 		path      : '/',
 		name      : 'Home',
-		component : AboutPageComponent
+		component : HomePageComponent
 	},
 	{
 		path      : '/course/:courseId',
 		name      : 'Course',
-		component : ExerciseComponent
+		component : CoursePageComponent
 	},
   {
 		path      : '/chapter/:courseId/:chapterId',
 		name      : 'Chapter',
-		component : ExerciseComponent
+		component : CoursePageComponent
 	},
   {
 		path      : '/exercise/:courseId/:chapterId/:exerciseId',
     name: 'Exercise',
-		component : ExerciseComponent
+		component : CoursePageComponent
 	},
 	{
 		path      : '/about',
