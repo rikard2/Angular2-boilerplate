@@ -86,7 +86,6 @@ gulp.task('serve', ['watch'], function() {
     '**/*.js'
   ];
 
-  gutil.log('watchFiles', watchFiles);
   browserSync.init({
 		port 			: 3000,
     files 			: watchFiles,
