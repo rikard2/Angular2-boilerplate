@@ -2,3 +2,8 @@ node_modules/
 src/js/build/
 dist/
 tsbuild/
+.user
+bin
+obj
+.csproj.user
+packages
