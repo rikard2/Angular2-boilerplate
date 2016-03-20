@@ -1,4 +1,3 @@
-// Libraries
 import {Component, ElementRef, Input} from 'angular2/core';
 
 @Component({
@@ -8,8 +7,8 @@ import {Component, ElementRef, Input} from 'angular2/core';
         <ng-content></ng-content>
       </div>
     </div>`,
-    selector: 'content'
+    selector: 'content-panel'
 })
-export class Panel {
+export class ContentPanel {
   @Input() title;
 }

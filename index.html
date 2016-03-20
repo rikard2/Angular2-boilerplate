@@ -4,26 +4,19 @@
 		<title>Angular 2 QuickStart</title>
 		<base href="/">
 		<!-- CSS -->
-		<script src="dist/vendor/codemirror/codemirror.js"></script>
-		<link href="dist/vendor/codemirror/codemirror.css" rel="stylesheet" type="text/css"/>
-
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 		<link href="dist/css/main.css" rel="stylesheet" type="text/css"/>
 		<link href='https://fonts.googleapis.com/css?family=Roboto:400,700,500' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
 		<!-- Script -->
+		<script src="node_modules/es6-shim/es6-shim.js"></script>
 		<script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
 		<script src="node_modules/systemjs/dist/system.src.js"></script>
 		<script src="node_modules/rxjs/bundles/Rx.js"></script>
 		<script src="node_modules/angular2/bundles/angular2.dev.js"></script>
 		<script src="node_modules/angular2/bundles/router.dev.js"></script>
 		<script src="node_modules/angular2/bundles/http.dev.js"></script>
-
-
-		<script src="dist/vendor/codemirror/sql.js"></script>
-		<link rel="stylesheet" href="dist/vendor/codemirror/show-hint.css" />
-		<script src="dist/vendor/codemirror/show-hint.js"></script>
-		<script src="dist/vendor/codemirror/sql-hint.js"></script>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
 		<script>
 			System.config({
@@ -42,32 +35,7 @@
 	<body>
 		<my-app>Loading...</my-app>
 	</body>
-	<script>
-	loadEditor = function(element) {
-		if (element.isEditor) {
-			return;
-		} else {
-			element.isEditor = true;
-		}
-
-		var mime = 'text/x-mariadb';
-
-
-		var editor = CodeMirror(element, {
-			mode: mime,
-
-			indentWithTabs: true,
-	    smartIndent: true,
-	    lineNumbers: true,
-	    matchBrackets : true,
-	    autofocus: true,
-	    extraKeys: {"Ctrl-Space": "autocomplete"},
-	    hintOptions: {tables: {
-	      users: {name: null, score: null, birthDate: null},
-	      countries: {name: null, population: null, size: null}
-	    }}
-
-		});
-	}
+	<script type='text/javascript' id="__bs_script__">//<![CDATA[
+	document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.2.11.1.js'><\/script>".replace("HOST", location.hostname));//]]>
 	</script>
 </html>

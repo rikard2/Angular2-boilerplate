@@ -5,18 +5,13 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class HttpService {
-    constructor(private http: Http) {
-      http['_defaultOptions'].headers.set('Content-Type', 'application/json');
-    }
+  baseUrl: string = '/api/service/';
 
-    list(type: string, action: string, model) {
-      model = {
-        'Model': model
-      };
+  constructor(private http: Http) {
+    http['_defaultOptions'].headers.set('Content-Type', 'application/json');
+  }
 
-      var url = 'http://adaptkiller.azurewebsites.net/api/service/' + type + '/' + action;
-      var post =  this.http.post(url, JSON.stringify(model));
-
-      return post.map((response) => JSON.parse(response['_body'])['Result']);
-    }
+  post(url: string, model) {
+    return this.http.post(url, JSON.stringify(model));
+  }
 }

@@ -10,12 +10,12 @@ var sourcemaps  = require('gulp-sourcemaps');
 var del         = require('del');
 var Config      = require('./gulpfile.config');
 var tsProject   = tsc.createProject('tsconfig.json');
-var browserSync = require('browser-sync');
+var browserSync = require('browser-sync').create();
 var superstatic = require( 'superstatic' );
 var sass        = require('gulp-sass');
 var concat      = require('gulp-concat');
+var gutil       = require('gulp-util');
 var uglify      = require('gulp-uglify');
-
 // Create config
 var config      = new Config();
 
@@ -45,14 +45,14 @@ gulp.task('ts-lint', function () {
 // Gulp TypeScript Compiler
 gulp.task('compile-ts', function () {
 	var sourceTsFiles = [
-		config.listFilesTS,
-		config.libraryTypeScriptDefinitions
+		'./src/**/*.ts'
 	];
 
 	var tsResult = gulp.src(sourceTsFiles)
 		               .pipe(tsc(tsProject));
 
 	return tsResult.js.pipe(uglify()).pipe(gulp.dest('./dist/js/'));
+
 });
 
 // Gulp Cleaner
@@ -67,22 +67,32 @@ gulp.task('clean-ts', function (cb) {
 	del(typeScriptGenFiles, cb);
 });
 
+var reload = browserSync.reload;
+var reloadBrowser = function() {
+  gutil.log('a reload would be nice');
+  reload();
+}
 // Gulp Watcher
 gulp.task('watch', function() {
-	gulp.watch([config.listFilesTS],   ['ts-lint', 'compile-ts']);
-	gulp.watch([config.listFilesSCSS], ['styles']);
-	gulp.watch([config.listFilesHTML], ['views']);
+	gulp.watch([config.listFilesTS],   ['ts-lint', 'compile-ts']).on("change", reloadBrowser);
+	gulp.watch([config.listFilesSCSS], ['styles']).on("change", reloadBrowser);
+	gulp.watch([config.listFilesHTML], ['views']).on("change", reloadBrowser);
 });
 
-// Serve task
-gulp.task('serve', ['vendor', 'compile-ts', 'styles', 'views', 'watch'], function() {
-	process.stdout.write('Starting browserSync and superstatic...\n');
-	browserSync({
+gulp.task('serve', ['watch'], function() {
+  var watchFiles = [
+    '**/*.html',
+    '**/*.scss',
+    '**/*.js'
+  ];
+
+  gutil.log('watchFiles', watchFiles);
+  browserSync.init({
 		port 			: 3000,
-		files 			: ['**/*.html', '**/*.scss', '**/*.js'],
+    files 			: watchFiles,
 		injectChanges 	: true,
 		logFileChanges 	: false,
-		logLevel 		: 'silent',
+		logLevel 		: 'debug',
 		logPrefix 		: 'angular2typescript',
 		notify 			: true,
 		reloadDelay 	: 500,
@@ -94,5 +104,7 @@ gulp.task('serve', ['vendor', 'compile-ts', 'styles', 'views', 'watch'], functio
 		}
 	});
 });
+// Serve task
+gulp.task('default', ['vendor', 'compile-ts', 'styles', 'views', 'serve'], function() {
 
-gulp.task('default', ['ts-lint', 'compile-ts', 'styles', 'views']);
+});
