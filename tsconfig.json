@@ -29,6 +29,7 @@
     "./src/component/elements/contentPanel.ts",
     "./src/component/pages/about/about.ts",
     "./src/component/pages/home/home.ts",
+    "./src/component/pages/webapi/webapi.ts",
     "./src/main.ts",
     "./src/service/httpservice.ts"
   ]

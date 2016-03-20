@@ -92,7 +92,7 @@ gulp.task('serve', ['watch'], function() {
     files 			: watchFiles,
 		injectChanges 	: true,
 		logFileChanges 	: false,
-		logLevel 		: 'debug',
+		logLevel 		: 'silent',
 		logPrefix 		: 'angular2typescript',
 		notify 			: true,
 		reloadDelay 	: 500,

@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="col-md-12">
+    <div *ngIf="testResult">
+      <content-panel>
+        <h4 class="text-success" style="margin-top: 0px;"><i class="fa fa-check"></i> WebApi was set up successfully!</h4>
+        <pre>{{ testResult | json }}</pre>
+      </content-panel>
+    </div>
+    <div *ngIf="!testResult">
+      <content-panel *ngIf="!testResult">
+        <h4 class="text-danger" style="margin-top: 0px;"><i class="fa fa-times"></i> WebApi was not set up successfully!</h4>
+        <br/>
+        <h4>To Use Web API:</h4>
+  <pre>1. Create Azure Database.
+2. Update Firewall on database to allow all remote connections (Between 0.0.0.0
+   and 255.255.255.255).
+3. Create a stored procedure like this:
+    CREATE SCHEMA API
+    GO
+    CREATE PROC API.Test
+    AS
+    BEGIN
+    SELECT 1 AS Id, 'Jeff' AS Name
+    UNION all
+    SELECT 2, 'Brown' AS Name
+    END
+4. Update the webapi/WebApi/Web.Config ConnectionString.
+5. Publish to azure app service.
+6. Update baseUrl in httpService.ts
+7. Reload #/webapi</pre>
+    </content-panel>
+  </div>
+  </div>
+</div>

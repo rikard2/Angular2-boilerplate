@@ -2,7 +2,7 @@ import {Component, ElementRef, Input} from 'angular2/core';
 
 @Component({
     template: `<div class="panel">
-      <h5 class="panel-title">{{ title }}</h5>
+      <h5 class="panel-title" *ngIf="title">{{ title }}</h5>
       <div class="panel-body">
         <ng-content></ng-content>
       </div>
