@@ -7,7 +7,7 @@ import {UserSessionService} from './userSessionService';
 
 @Injectable()
 export class HttpService {
-  baseUrl: string = 'http://xxx.azurewebsites.net/api/service/';
+  baseUrl: string = 'https://xxx.azurewebsites.net/api/service/';
 
   constructor(private http: Http, private userSessionService: UserSessionService) {
     http['_defaultOptions'].headers.set('Content-Type', 'application/json');

@@ -27,6 +27,7 @@ export class LoginPageComponent {
 
   submitLogin() {
     var component = this;
+    component.validationErrorMessage = null;
     this.httpService.save('loginuser_authenticate', this.loginModel)
     .subscribe(result => {
       if (result.ValidationErrorMessage) {

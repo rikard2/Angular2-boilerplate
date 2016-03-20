@@ -1,5 +1,6 @@
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-6 col-md-offset-3">
+    <content-panel title="Log in">
       <div *ngIf="validationErrorMessage" class="alert alert-danger" role="alert">{{ validationErrorMessage }}</div>
       <form>
         <div class="form-group">
@@ -12,5 +13,6 @@
           <input type="submit" class="btn btn-success" (click)="submitLogin()" value="Login" />
         </div>
       </form>
+    </content-panel>
   </div>
 </div>

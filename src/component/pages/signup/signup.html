@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-12">
-    {{ userSessionService.sessionKey }}
+    <content-panel title="Sign up">
       <div *ngIf="validationErrorMessage" class="alert alert-danger" role="alert">{{ validationErrorMessage }}</div>
       <form>
         <div class="form-group">
@@ -19,5 +19,6 @@
           <input type="submit" class="btn btn-success" (click)="submitSignup()" value="Sign up!" />
         </div>
       </form>
+    </content-panel>
   </div>
 </div>
