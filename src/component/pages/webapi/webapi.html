@@ -4,6 +4,7 @@
       <content-panel>
         <h4 class="text-success" style="margin-top: 0px;"><i class="fa fa-check"></i> WebApi was set up successfully!</h4>
         <pre>{{ testResult | json }}</pre>
+        <pre *ngIf="loginUser">{{ loginUser | json }}</pre>
       </content-panel>
     </div>
     <div *ngIf="!testResult">

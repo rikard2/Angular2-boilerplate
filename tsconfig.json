@@ -29,8 +29,11 @@
     "./src/component/elements/contentPanel.ts",
     "./src/component/pages/about/about.ts",
     "./src/component/pages/home/home.ts",
+    "./src/component/pages/login/login.ts",
+    "./src/component/pages/signup/signup.ts",
     "./src/component/pages/webapi/webapi.ts",
     "./src/main.ts",
-    "./src/service/httpservice.ts"
+    "./src/service/httpservice.ts",
+    "./src/service/userSessionService.ts"
   ]
 }

@@ -9,11 +9,17 @@ import {CUSTOM_DIRECTIVES} from '../../app/customDirectives';
 })
 export class WebapiPageComponent {
   testResult;
+  loginUser;
 
   constructor(private httpService: HttpService) {
     httpService.list('test', { })
     .subscribe(result => {
       this.testResult = result.Result;
+    });
+
+    httpService.list('loginuser_info', { })
+    .subscribe(result => {
+      this.loginUser = result.Result;
     });
   }
 }

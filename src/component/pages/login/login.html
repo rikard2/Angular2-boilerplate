@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-md-12">
+      <div *ngIf="validationErrorMessage" class="alert alert-danger" role="alert">{{ validationErrorMessage }}</div>
+      <form>
+        <div class="form-group">
+          Email: <input [value]="loginModel.Email" (change)="loginModel.Email = $event.target.value" type="text" class="form-control" />
+        </div>
+        <div class="form-group">
+          Password: <input [value]="loginModel.Password" (change)="loginModel.Password = $event.target.value" type="password" class="form-control" />
+        </div>
+        <div class="form-group">
+          <input type="submit" class="btn btn-success" (click)="submitLogin()" value="Login" />
+        </div>
+      </form>
+  </div>
+</div>
